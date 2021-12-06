@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/8640a68050.js" crossorigin="anonymous"></script>
+        <title>Trabalho 2 - DIW</title>
+    </head>
+
+    <body onload="carregaPerfil ()"></body>
+<!---------------------------------------Cabeçalho------------------------------------------------->
+        <header class="header">
+            <nav>
+                <input type="checkbox" id="menuToggle">
+                <label for="menuToggle" class="menu-icon">
+                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-times-circle"></i>
+                </label>
+                <ul class="menu">
+                    <li><a href="index.html">| Perfil |</a></li>
+                </ul>
+            </nav>
+            <form class="pesquisa" action="#" method="post">
+                <input type="text" class="texto-pesquisa" placeholder="Pesquisar" required>
+                <button type="submit"><i class="fas fa-search"></i></i></button>
+            </form>
+        </header>
+<!---------------------------------------Cabeçalho------------------------------------------------->
+
+<!---------------------------------------Perfil------------------------------------------------->        
+        <section class=" container perfil">
+             <div class="row">
+                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 imgPerfil width: 10rem">
+                    <img src="foto.jpg" alt="imagem1" alt="imagem1">
+                 </div>
+
+                 <div class="col-12 col-sm-12 col-md-6 col-lg-8 nomePerfil">
+                    <h1><b>Pedro</b></h1>
+                    <p><b>Objetivos:</b> Trabalhar desenvolvendo softwares através do meu conhecimento adquirido, podendo assim estar habilitado para desenvolver sistemas que facilitem a execução de tarefas. </p>    
+                </div>          
+        </section>
+<!---------------------------------------Perfil------------------------------------------------->
+
+<!---------------------------------------Projetos------------------------------------------------->
+        <section class="container projetos">
+            <div class="row projA">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6 txt1">
+                    <h1><b>Perfil GITHUB</b></h1>
+                </div>
+
+                <div id="tela"></div>
+                <script>
+                    function carregaPerfil() {
+                        let xhr = new XMLHttpRequest();
+            
+                        xhr.onload = function () {
+                            //alert('Retorno da Requisição: \n' + this.responseText)
+                           let data = JSON.parse (this.responseText);
+                           
+                            let perfilStr = `        <div class="card" style="width: 30rem;">
+                        <img src="${data.avatar_url}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">${data.name} <br>(${data.login})</h5>
+                          <p class="card-text">${data.bio}</p>
+                          <a href="${data.html_url}" target="_blank" class="btn btn-primary">Perfil no GITHUB</a>
+                        </div>`;
+                        document.getElementById ('tela').innerHTML = perfilStr;
+                        }
+            
+                        xhr.onerror = function () {
+                            alert(`Erro na Requisição \nCódigo: ${this.status} - ${this.statusText} `)
+                        }
+                        xhr.open('GET', 'https://api.github.com/users/PedroCarbonaro73 ');
+                        xhr.send();
+                    }
+                </script>
+            </div>
+            
+        </section>
+<!---------------------------------------Projetos------------------------------------------------->
+
+<!---------------------------------------Repositórios------------------------------------------------->
+<section class="container repositorio">
+    <h1><b>Repositórios GitHub</b></h1>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-1 col-lg-1 iconRep">
+            <a href="https://github.com/rafaballerini/DiscordBot"><i class="fas fa-folder"></i></a>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <h2><b>Balle bot</b></h2>
+            <p><b>Avaliação:</b> Esse é um projeto para criar o próprio bot de discord, sendo apresentado na plataforma do GITHUB.</p>
+            <h3><b>Atualizado em:01/12/2021</b></h3>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-1 col-lg-1 iconRep">
+            <a href="https://github.com/rafaballerini/Formulario"><i class="fas fa-folder"></i></a>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <h2><b>Formulário HTML E CSS</b></h2>
+            <p><b>Avaliação:</b> Código simples em HTML e CSS para a criação de um formulário no GITHUB.</p>
+            <h3><b>Atualizado em:01/01/2021</b></h3>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-1 col-lg-1 iconRep">
+            <a href="https://github.com/rafaballerini/GitTutorial"><i class="fas fa-folder"></i></a>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+            <h2><b>GIT E GITHUB</b></h2>
+            <p><b>Avaliação:</b> Como utilizar na prática o GIT e o GITHUB.</p>
+            <h3><b>Atualizado em:03/11/2020</b></h3>
+        </div>
+    </div>
+</section>
+<!---------------------------------------Repositórios------------------------------------------------->
+
+<!---------------------------------------Recomendação de conteúdo------------------------------------------------->
+<section class="container recomendacao">
+    <h1><b>Recomendação de Conteúdo</b></h1>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+            <iframe  width="340" height="350" src="https://www.youtube.com/embed/CXuepXFt_ow" frameborder="0" allowfullscreen></iframe>
+            <p><b>Vídeo: </b>Bootstrap 4 - Como inserir o Bootstrap CSS em uma página HTML</p>
+            <h3><b>Diretor: </b>Leandro Guarino <br><b>Roteiro: </b>Leandro Guarino <br><b>Estreia: </b>2018</h3>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+            <iframe  width="340" height="350" src="https://www.youtube.com/embed/qPYCnebQQ6U" frameborder="0" allowfullscreen></iframe>
+            <p><b>Vídeo:</b> Criando um site do zero com: HTML, CSS e JS - #01</p>
+            <h3><b>Diretor: </b>Escola Front-end <br><b>Roteiro: </b>Escola Front-end <br><b>Estreia:</b>2018</h3>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+            <iframe  width="340" height="350" src="https://www.youtube.com/embed/Ptbk2af68e8" frameborder="0" allowfullscreen></iframe>
+            <p><b>Vídeo:</b>O que o JavaScript é capaz de fazer?</p>
+            <h3><b>Diretor:</b>Curso em Vídeo <br><b>Roteiro:</b>Curso em vídeo <br><b>Estreia:</b>2019</h3>
+        </div>
+    </div>
+</section>
+<!---------------------------------------Recomendação de conteúdo------------------------------------------------->
+
+<!---------------------------------------Rodapé------------------------------------------------->
+        <footer class="container footer">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-9 col-lg-9 pFot">
+                    <p>Copyright 2021 - Disciplina de Desenvolvimento de Interfaces WEB - Pedro Carbonaro - <b>ICEI PUC Minas</b></p>
+                </div>
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 imgFot">
+                    <img src="logo_puc.jpg" alt="logo">
+                </div>
+            </div>
+        </footer>
+<!---------------------------------------Rodapé------------------------------------------------->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </body>
+</html>
